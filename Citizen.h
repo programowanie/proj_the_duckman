@@ -12,8 +12,28 @@ enum e_employment
 
 struct s_ideas
 {
-	int economy;
-	int freedom;
+	float economy;
+	float freedom;
+	//int police;
+};
+
+class Country
+{
+private:
+	//string name;
+	long int budget;
+	s_ideas ideas;
+	int taxes;
+	int year;
+public:
+	Country();
+	void description();
+	long int r_budget() { return budget;}
+	int r_year() { return year;}
+	int r_taxes() { return taxes;}
+	float r_economy() { return ideas.economy; }
+	float r_freedom() { return ideas.freedom; }
+	void next_year() { year++; }
 };
 
 class Citizen
@@ -28,9 +48,9 @@ private:
 	int happiness;
 	e_employment employment;
 	s_ideas ideas;
-	float earnings;
+	long int earnings;
 	int commitment;
-	int charisma;
+	float charisma;
 	int truthfulness;
 
 	static void init();
@@ -38,11 +58,17 @@ private:
 public:
 	Citizen();
 	void description();
-	int r_economy() { return ideas.economy; }
-	int r_freedom() { return ideas.freedom; }
+	float r_economy() { return ideas.economy; }
+	float r_freedom() { return ideas.freedom; }
+	int r_age() { return age; }
+	int r_commitment() { return commitment; }
+	int r_happiness() { return happiness; }
+	int r_charisma() { return charisma; }
 	string r_name() { return name; }
 	string r_surname() { return surname; }
 	e_employment r_employment() { return employment; }
+	void change_happiness();
+	//void death(vector<Citizen*> &vectorOfCitizens);
 };
 
 /*vector <Citizen *> vectorOfPoliticians;

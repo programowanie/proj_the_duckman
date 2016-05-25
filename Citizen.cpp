@@ -7,6 +7,23 @@ vector <string> Citizen::names;
 vector <string> Citizen::surnames;
 int Citizen::counter = 0;
 
+Country::Country()
+{
+	year = 2000;
+	ideas.economy = rand()%10 + 50;
+	ideas.freedom = rand()%10 + 50;
+	taxes = rand()%20 + 10;
+}
+
+void Country::description()
+{
+	cout << "JEST ROK " << (this)->year << endl;
+	cout << "BUDZET PANSTWA TO " << (this)->budget << endl;
+	cout << "IDEOLOGIA PANSTWA: " << endl;
+	cout << "Gospodarka: " << (this)->ideas.economy << endl;
+	cout << "Swobody: " << (this)->ideas.freedom << endl;
+}
+
 void Citizen::init()
 {
 	ifstream file("names.dat");
@@ -38,8 +55,9 @@ Citizen::Citizen()
 		employment = criminal;
 	if ((counter%100)>=95)
 		employment = politician;
-	charisma = rand()%101;
+	charisma = rand()%10 + 1;
 	truthfulness = rand()%101;
+	earnings = rand()%10000 + 10000;
 	counter++;
 }
 
@@ -64,6 +82,10 @@ void Citizen::description()
 	cout << "(" << ideas.freedom << ")" << endl << endl;
 	if (employment==politician)
 		cout << "Charyzma: " << charisma << endl << "Prawdomownosc: " << truthfulness << endl << endl;
+}
+
+void Citizen::change_happiness()
+{
 }
 
 /*int Citizen::vote()
