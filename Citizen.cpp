@@ -1,28 +1,12 @@
-#include "Citizen.h"
+#include "Country.h"
 #include <stdlib.h>
 #include <fstream>
 #include <iostream>
+#include <cmath>
 
 vector <string> Citizen::names;
 vector <string> Citizen::surnames;
 int Citizen::counter = 0;
-
-Country::Country()
-{
-	year = 2000;
-	ideas.economy = rand()%10 + 50;
-	ideas.freedom = rand()%10 + 50;
-	taxes = rand()%20 + 10;
-}
-
-void Country::description()
-{
-	cout << "JEST ROK " << (this)->year << endl;
-	cout << "BUDZET PANSTWA TO " << (this)->budget << endl;
-	cout << "IDEOLOGIA PANSTWA: " << endl;
-	cout << "Gospodarka: " << (this)->ideas.economy << endl;
-	cout << "Swobody: " << (this)->ideas.freedom << endl;
-}
 
 void Citizen::init()
 {
@@ -42,6 +26,7 @@ Citizen::Citizen()
 {
 	static int amountOfNames = (init(), names.size());
 	static int amountOfSurnames = (init(), surnames.size());
+	id = counter;
 	name = names[rand()%amountOfNames];
 	surname = surnames[rand()%amountOfSurnames];
 	age = rand()%80;
@@ -49,6 +34,7 @@ Citizen::Citizen()
 	commitment = rand()%81 + 20;
 	ideas.economy = rand()%101;
 	ideas.freedom = rand()%101;
+	ideas.taxes = rand()%101;
 	if ((counter%100)<85)
 		employment = standard;
 	if ((counter%100)>=85 && (counter%100)<95)
@@ -57,13 +43,13 @@ Citizen::Citizen()
 		employment = politician;
 	charisma = rand()%10 + 1;
 	truthfulness = rand()%101;
-	earnings = rand()%10000 + 10000;
+	earnings = rand()%10 + 10;
 	counter++;
 }
 
 void Citizen::description()
 {
-	cout << "Imie: " << name << endl << "Nazwisko: " << surname << endl 
+	cout << "ID: " << id << endl << "Imie: " << name << endl << "Nazwisko: " << surname << endl 
 	<< "Wiek:" << age << endl << 
 	"Zatrudnienie: ";
 	if (employment==standard) cout << "Sektor prywatny";
@@ -79,13 +65,36 @@ void Citizen::description()
 	if (ideas.freedom<30) cout << "wolnosciowiec ";
 	if (ideas.freedom>=30 && ideas.freedom<=70) cout << "neutralny ";
 	if (ideas.freedom>70) cout << "konserwatywny ";
-	cout << "(" << ideas.freedom << ")" << endl << endl;
+	cout << "(" << ideas.freedom << ")" << endl << "\tPodatki: ";
+	if (ideas.taxes<30) cout << "niskie ";
+	if (ideas.taxes>=30 && ideas.taxes<=70) cout << "neutralny ";
+	if (ideas.taxes>70) cout << "wysokie ";
+	cout << "(" << ideas.taxes << ")"
+		<< endl << endl;
 	if (employment==politician)
 		cout << "Charyzma: " << charisma << endl << "Prawdomownosc: " << truthfulness << endl << endl;
 }
 
-void Citizen::change_happiness()
+void Citizen::change_happiness(Country &ourCountry)
 {
+	if (fabs(((this)->r_economy())-ourCountry.r_economy())>20)
+		(this)->happiness -= sqrt(sqrt(fabs(((this)->r_economy())-ourCountry.r_economy())));
+	if (fabs(((this)->r_economy())-ourCountry.r_economy())<10)
+		(this)->happiness += fabs((this)->r_economy()-ourCountry.r_economy());
+	//if (ourCountry.)
+	if ((this)->happiness>100)
+		(this)->happiness=100;
+	if ((this)->happiness<0)
+		(this)->happiness=0;
+}
+
+void Citizen::pay_taxes(Country &ourCountry)
+{
+	if((this)->employment == standard)
+	{
+		cout << (this)->earnings;
+		ourCountry.budget += ((this)->earnings)*(ourCountry.r_taxes()/2);
+	}
 }
 
 /*int Citizen::vote()

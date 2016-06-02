@@ -1,4 +1,4 @@
-#include "Citizen.h"
+#include "Country.h"
 #include <iostream>
 #include <cmath>
 
@@ -6,6 +6,7 @@ void atmosphere(int numberOfCitizens, vector<Citizen*> &vectorOfCitizens)
 {
 	float avg_economy=0;
 	float avg_freedom=0;
+	float avg_taxes=0;
 	float avg_happiness=0;
 	int underage = 0;
 	for (int i = 0; i<numberOfCitizens; i++)
@@ -14,6 +15,7 @@ void atmosphere(int numberOfCitizens, vector<Citizen*> &vectorOfCitizens)
 		{
 			avg_economy+=(vectorOfCitizens[i])->r_economy();
 			avg_freedom+=(vectorOfCitizens[i])->r_freedom();
+			avg_taxes+=(vectorOfCitizens[i])->r_taxes();
 			avg_happiness+=(vectorOfCitizens[i])->r_happiness();
 		}
 		else underage++;
@@ -21,11 +23,13 @@ void atmosphere(int numberOfCitizens, vector<Citizen*> &vectorOfCitizens)
 	cout << "Nastroje w spoleczenstwie: " << endl;
 	cout << "Gospodarka: " << avg_economy/(numberOfCitizens-underage) << endl;
 	cout << "Swobody: " << avg_freedom/(numberOfCitizens-underage) << endl;
+	cout << "Podatki: " << avg_taxes/(numberOfCitizens-underage) << endl;
 	cout << "Zadowolenie: " << avg_happiness/(numberOfCitizens-underage) << endl;
 }
 
-int vote(int numberOfCitizens, vector<Citizen*> &vectorOfCitizens)
+Citizen vote(int numberOfCitizens, vector<Citizen*> &vectorOfCitizens, Citizen president)
 {
+cout << endl << "--------WYBORY PREZYDENCKIE--------" << endl;
 int attendance = 0;
 int underage = 0;
 vector <Citizen *> vectorOfPoliticians;
@@ -48,7 +52,13 @@ for (int x=0; x<numberOfCitizens; x++)
 	{
 		endorsement[j] += fabs(fabs((vectorOfCitizens[x])->r_economy()) - fabs((vectorOfPoliticians[j])->r_economy()));
 		endorsement[j] += fabs(fabs((vectorOfCitizens[x])->r_freedom()) - fabs((vectorOfPoliticians[j])->r_freedom()));
+		endorsement[j] += fabs(fabs((vectorOfCitizens[x])->r_taxes()) - fabs((vectorOfPoliticians[j])->r_taxes()));
 		endorsement[j] /= sqrt(sqrt((vectorOfPoliticians[j])->r_charisma()));
+		if (president.r_id() == (vectorOfPoliticians[j])->r_id())
+		{
+			endorsement[j] += sqrt((float)(100-president.r_truthfulness()));
+			//endorsement[j] += sqrt((float)(100-(vectorOfCitizens[x])->r_economy()));
+		}
 	}
 	int choice = 0;
 	for (int i=0; i<numberOfPoliticians; i++)
@@ -99,9 +109,10 @@ for (int i = 0; i < numberOfPoliticians; i++)
 		}
 	}
 
+
 cout << endl << endl << "Wybory wygral kandydat nr " << winner+1 << ", " << (vectorOfPoliticians[winner])->r_name() << " " << (vectorOfPoliticians[winner])->r_surname() << "." << endl;
 (vectorOfPoliticians[winner])->description();
 //cout << "W drugiej turze zmierzy sie z kandydatem nr " << second +1 << ", " << (vectorOfPoliticians[second])->r_name() << " " << (vectorOfPoliticians[second])->r_surname() << "." << endl;
 //(vectorOfPoliticians[second])->description();
-return winner;
+return (*vectorOfPoliticians[winner]);
 }
