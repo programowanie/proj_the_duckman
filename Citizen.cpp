@@ -77,9 +77,9 @@ void Citizen::description()
 
 void Citizen::change_happiness(Country &ourCountry)
 {
-	if (fabs(((this)->r_economy())-ourCountry.r_economy())>20)
+	if (fabs(((this)->r_economy())-ourCountry.r_economy())>30)
 		(this)->happiness -= sqrt(sqrt(fabs(((this)->r_economy())-ourCountry.r_economy())));
-	if (fabs(((this)->r_economy())-ourCountry.r_economy())<10)
+	if (fabs(((this)->r_economy())-ourCountry.r_economy())<15)
 		(this)->happiness += fabs((this)->r_economy()-ourCountry.r_economy());
 	//if (ourCountry.)
 	if ((this)->happiness>100)

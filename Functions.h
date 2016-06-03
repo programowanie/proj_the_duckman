@@ -110,6 +110,7 @@ for (int i = 0; i < numberOfPoliticians; i++)
 	}
 
 
+
 cout << endl << endl << "Wybory wygral kandydat nr " << winner+1 << ", " << (vectorOfPoliticians[winner])->r_name() << " " << (vectorOfPoliticians[winner])->r_surname() << "." << endl;
 (vectorOfPoliticians[winner])->description();
 //cout << "W drugiej turze zmierzy sie z kandydatem nr " << second +1 << ", " << (vectorOfPoliticians[second])->r_name() << " " << (vectorOfPoliticians[second])->r_surname() << "." << endl;

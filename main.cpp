@@ -9,7 +9,7 @@ int main()
 {
 	srand(time(NULL));
 	Country ourCountry;
-	int numberOfCitizens = 100;
+	int numberOfCitizens = 1000;
 	//cin >> numberOfCitizens;
 	Citizen citizens[numberOfCitizens];
 	vector<Citizen *> vectorOfCitizens;
