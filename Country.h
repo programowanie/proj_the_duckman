@@ -19,4 +19,5 @@ public:
 	float r_freedom() { return ideas.freedom; }
 	void next_year() { year++; }
 	void change_country_ideas(Citizen);
+	void pay_welfare();
 };

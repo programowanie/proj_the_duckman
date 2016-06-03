@@ -36,7 +36,10 @@ vector <Citizen *> vectorOfPoliticians;
 for (int i = 0; i < numberOfCitizens; i++)
 {
 	if ((vectorOfCitizens[i])->r_employment() == politician)
-		vectorOfPoliticians.push_back((vectorOfCitizens[i]));
+	{
+		if ((vectorOfCitizens[i])->r_age()>20)
+			vectorOfPoliticians.push_back((vectorOfCitizens[i]));
+	}
 }
 int numberOfPoliticians = vectorOfPoliticians.size();
 int *results = new int[numberOfPoliticians];

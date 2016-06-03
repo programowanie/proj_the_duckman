@@ -33,19 +33,19 @@ void Country::description(Citizen president)
 void Country::change_country_ideas(Citizen president)
 {
 	if ((this)->ideas.economy > president.r_economy())
-		(this)->ideas.economy -= sqrt(fabs((this)->ideas.economy - president.r_economy()));
+		(this)->ideas.economy -= (sqrt(fabs((this)->ideas.economy - president.r_economy())))*president.r_truthfulness()/100;
 	if ((this)->ideas.economy < president.r_economy())
-		(this)->ideas.economy += sqrt(fabs((this)->ideas.economy - president.r_economy()));
+		(this)->ideas.economy += (sqrt(fabs((this)->ideas.economy - president.r_economy())))*president.r_truthfulness()/100;
 
 	if ((this)->ideas.freedom > president.r_freedom())
-		(this)->ideas.freedom -= sqrt(fabs((this)->ideas.freedom - president.r_freedom()));
+		(this)->ideas.freedom -= (sqrt(fabs((this)->ideas.freedom - president.r_freedom())))*president.r_truthfulness()/100;
 	if ((this)->ideas.freedom < president.r_freedom())
-		(this)->ideas.freedom += sqrt(fabs((this)->ideas.freedom - president.r_freedom()));
+		(this)->ideas.freedom += (sqrt(fabs((this)->ideas.freedom - president.r_freedom())))*president.r_truthfulness()/100;
 
 	if ((this)->ideas.taxes > president.r_taxes())
-		(this)->ideas.taxes -= sqrt(fabs((this)->ideas.taxes - president.r_taxes()));
+		(this)->ideas.taxes -= (sqrt(fabs((this)->ideas.taxes - president.r_taxes())))*president.r_truthfulness()/100;
 	if ((this)->ideas.taxes < president.r_taxes())
-		(this)->ideas.taxes += sqrt(fabs((this)->ideas.taxes - president.r_taxes()));
+		(this)->ideas.taxes += (sqrt(fabs((this)->ideas.taxes - president.r_taxes())))*president.r_truthfulness()/100;
 
 	if ((this)->ideas.economy>100)
 		(this)->ideas.economy = 100;
@@ -59,4 +59,9 @@ void Country::change_country_ideas(Citizen president)
 		(this)->ideas.taxes = 100;
 	if ((this)->ideas.taxes<0)
 		(this)->ideas.taxes = 0;
+}
+
+void Country::pay_welfare()
+{
+	budget -= (budget*(this)->r_economy()*2/100);
 }

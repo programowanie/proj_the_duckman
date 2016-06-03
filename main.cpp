@@ -20,16 +20,22 @@ int main()
 	//	citizens[i].description();
 	while (1)
 	{
+		int death_ratio=0;
 		ourCountry.description(president);
 		atmosphere(numberOfCitizens, vectorOfCitizens);
 		if (!(ourCountry.r_year()%4)) president = vote(numberOfCitizens, vectorOfCitizens, president);
 		ourCountry.next_year();
-		getchar();
 		for (vector<Citizen*>::iterator it = vectorOfCitizens.begin(); it!=vectorOfCitizens.end(); it++)
 		{
 			(*it)->change_happiness(ourCountry);
+			(*it)->go_criminal(ourCountry);
 			(*it)->pay_taxes(ourCountry);
+			death_ratio+=(*it)->death(president);
+			(*it)->change_earnings(ourCountry);
 		}
+		ourCountry.pay_welfare();
 		ourCountry.change_country_ideas(president);
+		cout << endl << endl << "W tym roku zmarlo/narodzilo sie " << death_ratio << " ludzi." << endl << "=========================";
+		getchar();
 	}
 }
