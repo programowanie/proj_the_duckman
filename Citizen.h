@@ -18,6 +18,7 @@ struct s_ideas
 	float economy; //im wyższy, tym większy wpływ państwa na gospodarkę
 	float freedom; //im wyższy, tym większy wpływ państwa na ograniczanie swobód
 	float taxes;
+	float tradition;
 	//int police;
 };
 
@@ -48,6 +49,7 @@ public:
 	float r_economy() { return ideas.economy; }
 	float r_freedom() { return ideas.freedom; }
 	float r_taxes() { return ideas.taxes;}
+	float r_tradition() {return ideas.tradition; }
 	float r_age() { return age; }
 	float r_commitment() { return commitment; }
 	float r_happiness() { return happiness; }
@@ -61,4 +63,5 @@ public:
 	bool death(Citizen&);
 	void change_earnings(Country&);
 	void go_criminal(Country&);
+	void change_age() { age++; }
 };

@@ -30,17 +30,19 @@ Citizen::Citizen()
 	name = names[rand()%amountOfNames];
 	surname = surnames[rand()%amountOfSurnames];
 	age = rand()%80;
-	happiness = rand()%71 + 30;
 	commitment = rand()%81 + 20;
 	ideas.economy = rand()%101;
 	ideas.freedom = rand()%101;
 	ideas.taxes = rand()%101;
-	if ((counter%100)<80)
+	ideas.tradition = rand()%101;
+	if ((counter%100)<85)
 		employment = standard;
-	if ((counter%100)>=80 && (counter%100)<90)
+	if ((counter%100)>=85 && (counter%100)<90)
 		employment = criminal;
 	if ((counter%100)>=90)
 		employment = politician;
+	if (employment!=criminal) happiness = rand()%71 + 30;
+	else happiness = rand()%10;
 	charisma = rand()%10 + 1;
 	truthfulness = rand()%101;
 	earnings = rand()%10 + 10;
@@ -69,7 +71,11 @@ void Citizen::description()
 	if (ideas.taxes<30) cout << "niskie ";
 	if (ideas.taxes>=30 && ideas.taxes<=70) cout << "neutralny ";
 	if (ideas.taxes>70) cout << "wysokie ";
-	cout << "(" << ideas.taxes << ")"
+	cout << "(" << ideas.taxes << ")" << endl << "\tTradycja: ";
+	if (ideas.tradition<30) cout << "kosmopolita ";
+	if (ideas.tradition>=30 && ideas.tradition<=70) cout << "neutralny ";
+	if (ideas.tradition>70) cout << "narodowiec ";
+	cout << "(" << ideas.tradition << ")"
 		<< endl << endl;
 	if (employment==politician)
 		cout << "Charyzma: " << charisma << endl << "Prawdomownosc: " << truthfulness << endl << endl;
@@ -77,15 +83,50 @@ void Citizen::description()
 
 void Citizen::change_happiness(Country &ourCountry)
 {
-	if (fabs(((this)->r_economy())-ourCountry.r_economy())>30)
+	if (fabs(((this)->r_economy())-ourCountry.r_economy())>40)
 		happiness -= sqrt(sqrt(fabs(((this)->r_economy())-ourCountry.r_economy())));
-	if (fabs(((this)->r_economy())-ourCountry.r_economy())<15)
-		happiness += fabs((this)->r_economy()-ourCountry.r_economy());
-	happiness += sqrt(sqrt(sqrt((float)(this)->r_economy())));
+	if (fabs(((this)->r_economy())-ourCountry.r_economy())<20)
+		happiness += sqrt(fabs((this)->r_economy()-ourCountry.r_economy()));
+	//happiness += sqrt(sqrt(sqrt((float)(this)->r_economy())));
+
+	if (fabs(((this)->r_freedom())-ourCountry.r_freedom())>40)
+		happiness -= sqrt(sqrt(fabs(((this)->r_freedom())-ourCountry.r_freedom())));
+	if (fabs(((this)->r_freedom())-ourCountry.r_freedom())<20)
+		happiness += sqrt(fabs((this)->r_freedom()-ourCountry.r_freedom()));
+	//happiness += sqrt(sqrt(sqrt((float)(this)->r_freedom())));
+
+	if (fabs(((this)->r_taxes())-ourCountry.r_taxes())>40)
+		happiness -= sqrt(sqrt(fabs(((this)->r_taxes())-ourCountry.r_taxes())));
+	if (fabs(((this)->r_taxes())-ourCountry.r_taxes())<20)
+		happiness += sqrt(fabs((this)->r_taxes()-ourCountry.r_taxes()));
+	//happiness += sqrt(sqrt(sqrt((float)(this)->r_economy())));
+
+	if (fabs(((this)->r_tradition())-ourCountry.r_tradition())>40)
+		happiness -= sqrt(sqrt(fabs(((this)->r_tradition())-ourCountry.r_tradition())));
+	if (fabs(((this)->r_tradition())-ourCountry.r_tradition())<20)
+		happiness += sqrt(fabs((this)->r_tradition()-ourCountry.r_tradition()));
+	//happiness += sqrt(sqrt(sqrt((float)(this)->r_economy())));
 	
 	if((ourCountry.budget>0)&&rand()%6>4)
-		happiness+=1;
-	else happiness-=1;
+		happiness++;
+	else happiness--;
+
+	/*if (happiness>70&&rand()%3)
+		happiness -= rand()%12;
+	if (happiness>80&&rand()%3)
+		happiness -= rand()%22;
+	if (happiness>90&&rand()%3)
+		happiness -= rand()%32;
+
+	if (happiness<30&&rand()%3)
+		happiness += rand()%6;
+	if (happiness<20&&rand()%3)
+		happiness += rand()%11;
+	if (happiness<10&&rand()%3)
+		happiness += rand()%16;*/
+
+
+
 
 	if (happiness>100)
 		happiness=100;
@@ -95,7 +136,7 @@ void Citizen::change_happiness(Country &ourCountry)
 
 void Citizen::pay_taxes(Country &ourCountry)
 {
-	if(employment == standard)
+	if((employment == standard)&&(age>=18))
 	{
 		ourCountry.budget += (earnings)*(ourCountry.r_taxes()/2);
 	}
@@ -106,14 +147,14 @@ bool Citizen::death(Citizen &president)
 	int x = (this)->r_age();
 	int death_randomizer = (float)(rand()%100001)/1000.0;
 	bool is_dead=0;
-	int new_age=0;
+	int new_age=-1;
 	if(((x/50)*(x/50)*(x/50)*sqrt(x*0.75))>death_randomizer)
 		is_dead=1;
 	//politycy poza prezydentem beda mieli wieksza szanse na smierc - stres, zamachy, te sprawy :)
 	//glownie chodzi o wieksza wymiennosc wsrod politykow
 	if (employment == politician && ((this)->r_id()!=president.r_id()))
 		{
-			if ((this)->r_age()>rand()%100)
+			if ((this)->r_age()>rand()%300)
 			{
 				is_dead=1;
 				new_age=rand()%30+20;
@@ -128,11 +169,14 @@ bool Citizen::death(Citizen &president)
 		ideas.economy = rand()%101;
 		ideas.freedom = rand()%101;			
 		ideas.taxes = rand()%101;
-		charisma = rand()%10 + 1;
+		ideas.tradition = rand()%101;
+		charisma = rand()%101;
 		truthfulness = rand()%101;
 		earnings = rand()%10 + 10;
+		age++;
 		return 1;
 	}
+	age++;
 	return 0;
 }
 
@@ -143,10 +187,27 @@ void Citizen::change_earnings(Country& ourCountry)
 
 void Citizen::go_criminal(Country& ourCountry)
 {
-	if ((happiness<(30.0*ourCountry.r_freedom()/100))&&employment==standard)
-		if(id%11>rand()%20)
+	if ((happiness<(10.0*ourCountry.r_freedom()/100))&&employment==standard)
+	{
+		//if(rand()%100<1)
 			employment = criminal;
-	if ((happiness>(30.0*ourCountry.r_freedom()/100))&&employment==criminal)
-		if(id%11>rand()%20)
+	}
+
+	if ((happiness<(10.0*ourCountry.r_taxes()/100))&&employment==standard)
+	{
+		//if(rand()%100<1)
+			employment = criminal;
+	}
+
+	if ((happiness>(10.0*ourCountry.r_freedom()/100))&&employment==criminal)
+	{
+		//if(rand()%4<1)
 			employment = standard;
+	}
+
+	if ((happiness>(10.0*ourCountry.r_taxes()/100))&&employment==criminal)
+	{
+		//if(rand()%4<3)
+			employment = standard;
+	}
 }

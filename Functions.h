@@ -2,6 +2,31 @@
 #include <iostream>
 #include <cmath>
 
+void show_employment(int numberOfCitizens, vector<Citizen*> &vectorOfCitizens)
+{
+	int standards = 0;
+	int criminals = 0;
+	int politicians = 0;
+	int underage = 0;
+	for (int i = 0; i<numberOfCitizens; i++)
+	{
+		if ((vectorOfCitizens[i]->r_age()>=18))
+		{
+			if ((vectorOfCitizens[i])->r_employment()==standard)
+				standards++;
+			if ((vectorOfCitizens[i])->r_employment()==criminal)
+				criminals++;
+			if ((vectorOfCitizens[i])->r_employment()==politician)
+				politicians++;
+		}
+	else underage++;
+	}
+	cout << "Zatrudnienie w spoleczenstwie: " << endl;
+	cout << "Pracujacy: " << (float)standards*100/(numberOfCitizens-underage) << " %" << endl;
+	cout << "Przestepcy (nie placacy podatkow): " << (float)criminals*100/(numberOfCitizens-underage) << " %" << endl;
+	cout << "Politycy: " << (float)politicians*100/(numberOfCitizens-underage) << " %" << endl;
+}
+
 void atmosphere(int numberOfCitizens, vector<Citizen*> &vectorOfCitizens)
 {
 	float avg_economy=0;
@@ -56,7 +81,8 @@ for (int x=0; x<numberOfCitizens; x++)
 		endorsement[j] += fabs(fabs((vectorOfCitizens[x])->r_economy()) - fabs((vectorOfPoliticians[j])->r_economy()));
 		endorsement[j] += fabs(fabs((vectorOfCitizens[x])->r_freedom()) - fabs((vectorOfPoliticians[j])->r_freedom()));
 		endorsement[j] += fabs(fabs((vectorOfCitizens[x])->r_taxes()) - fabs((vectorOfPoliticians[j])->r_taxes()));
-		endorsement[j] /= sqrt(sqrt((vectorOfPoliticians[j])->r_charisma()));
+		endorsement[j] += fabs(fabs((vectorOfCitizens[x])->r_tradition()) - fabs((vectorOfPoliticians[j])->r_tradition()));
+		endorsement[j] /= sqrt(sqrt(sqrt(sqrt((vectorOfPoliticians[j])->r_charisma()))));
 		if (president.r_id() == (vectorOfPoliticians[j])->r_id())
 		{
 			endorsement[j] += sqrt((float)(100-president.r_truthfulness()));
@@ -76,7 +102,7 @@ for (int x=0; x<numberOfCitizens; x++)
 		endorsement[i] = 0;
 	if ((vectorOfCitizens[x])->r_age() >= 18)
 		{
-			if ((vectorOfCitizens[x])->r_commitment()>=rand()%100)
+			if ((vectorOfCitizens[x])->r_commitment()>=rand()%101)
 			{
 				results[choice]++;
 				attendance++;
@@ -87,22 +113,22 @@ for (int x=0; x<numberOfCitizens; x++)
 
 cout << "Frekwencja w pierwszej turze wyniosla " << attendance << "/" << numberOfCitizens-underage
 << " (" << ((float)attendance/((float)numberOfCitizens-(float)underage))*100.0 << "%)." << endl;
-cout << "Wyniki pierwszej tury: " << endl;
+/*cout << "Wyniki pierwszej tury: " << endl;
 for (int i = 0; i < numberOfPoliticians; i++)
 {
 	cout << results[i] << "\t";
 	cout << (vectorOfPoliticians[i])->r_name() << " " << (vectorOfPoliticians[i])->r_surname() << endl;
-}
+}*/
 
 	int winner = 0;
-	int second = 0;
+	//int second = 0;
 	for (int i = 0; i < numberOfPoliticians; i++)
 	{
 		if (results[i] > results[winner])
 			winner = i;
 	}
 
-	if (winner==0) second = 1;
+	/*if (winner==0) second = 1;
 	for (int i = 0; i < numberOfPoliticians; i++)
 	{
 		if (i != winner)
@@ -110,7 +136,7 @@ for (int i = 0; i < numberOfPoliticians; i++)
 			if (results[i] > results[second])
 				second = i;
 		}
-	}
+	}*/
 
 
 

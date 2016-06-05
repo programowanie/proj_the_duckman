@@ -17,6 +17,7 @@ public:
 	float r_taxes() { return ideas.taxes;}
 	float r_economy() { return ideas.economy; }
 	float r_freedom() { return ideas.freedom; }
+	float r_tradition() { return ideas.tradition;}
 	void next_year() { year++; }
 	void change_country_ideas(Citizen);
 	void pay_welfare();
