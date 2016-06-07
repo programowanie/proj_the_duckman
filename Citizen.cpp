@@ -87,45 +87,29 @@ void Citizen::change_happiness(Country &ourCountry)
 		happiness -= sqrt(sqrt(fabs(((this)->r_economy())-ourCountry.r_economy())));
 	if (fabs(((this)->r_economy())-ourCountry.r_economy())<20)
 		happiness += sqrt(fabs((this)->r_economy()-ourCountry.r_economy()));
-	//happiness += sqrt(sqrt(sqrt((float)(this)->r_economy())));
+
 
 	if (fabs(((this)->r_freedom())-ourCountry.r_freedom())>40)
 		happiness -= sqrt(sqrt(fabs(((this)->r_freedom())-ourCountry.r_freedom())));
 	if (fabs(((this)->r_freedom())-ourCountry.r_freedom())<20)
 		happiness += sqrt(fabs((this)->r_freedom()-ourCountry.r_freedom()));
-	//happiness += sqrt(sqrt(sqrt((float)(this)->r_freedom())));
+
 
 	if (fabs(((this)->r_taxes())-ourCountry.r_taxes())>40)
 		happiness -= sqrt(sqrt(fabs(((this)->r_taxes())-ourCountry.r_taxes())));
 	if (fabs(((this)->r_taxes())-ourCountry.r_taxes())<20)
 		happiness += sqrt(fabs((this)->r_taxes()-ourCountry.r_taxes()));
-	//happiness += sqrt(sqrt(sqrt((float)(this)->r_economy())));
+
 
 	if (fabs(((this)->r_tradition())-ourCountry.r_tradition())>40)
 		happiness -= sqrt(sqrt(fabs(((this)->r_tradition())-ourCountry.r_tradition())));
 	if (fabs(((this)->r_tradition())-ourCountry.r_tradition())<20)
 		happiness += sqrt(fabs((this)->r_tradition()-ourCountry.r_tradition()));
-	//happiness += sqrt(sqrt(sqrt((float)(this)->r_economy())));
+
 	
 	if((ourCountry.budget>0)&&rand()%6>4)
 		happiness++;
 	else happiness--;
-
-	/*if (happiness>70&&rand()%3)
-		happiness -= rand()%12;
-	if (happiness>80&&rand()%3)
-		happiness -= rand()%22;
-	if (happiness>90&&rand()%3)
-		happiness -= rand()%32;
-
-	if (happiness<30&&rand()%3)
-		happiness += rand()%6;
-	if (happiness<20&&rand()%3)
-		happiness += rand()%11;
-	if (happiness<10&&rand()%3)
-		happiness += rand()%16;*/
-
-
 
 
 	if (happiness>100)

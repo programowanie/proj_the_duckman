@@ -113,12 +113,14 @@ for (int x=0; x<numberOfCitizens; x++)
 
 cout << "Frekwencja w pierwszej turze wyniosla " << attendance << "/" << numberOfCitizens-underage
 << " (" << ((float)attendance/((float)numberOfCitizens-(float)underage))*100.0 << "%)." << endl;
-/*cout << "Wyniki pierwszej tury: " << endl;
-for (int i = 0; i < numberOfPoliticians; i++)
-{
-	cout << results[i] << "\t";
-	cout << (vectorOfPoliticians[i])->r_name() << " " << (vectorOfPoliticians[i])->r_surname() << endl;
-}*/
+
+	/*cout << "Wyniki pierwszej tury: " << endl;
+	for (int i = 0; i < numberOfPoliticians; i++)
+	{
+		cout << results[i] << "\t";
+		cout << (vectorOfPoliticians[i])->r_name() << " " << (vectorOfPoliticians[i])->r_surname() << endl;
+	}*/
+
 
 	int winner = 0;
 	//int second = 0;

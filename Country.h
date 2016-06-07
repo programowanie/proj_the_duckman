@@ -11,7 +11,7 @@ private:
 public:
 	float budget;
 	Country();
-	void description(Citizen);
+	void description(Citizen, bool);
 	float r_budget() { return budget;}
 	int r_year() { return year;}
 	float r_taxes() { return ideas.taxes;}

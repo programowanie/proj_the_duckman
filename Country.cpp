@@ -6,7 +6,7 @@
 
 Country::Country()
 {
-	year = 2000;
+	year = 0;
 	budget = rand()%10000+10000;
 	ideas.economy = rand()%20 + 40;
 	ideas.freedom = rand()%20 + 40;
@@ -14,10 +14,10 @@ Country::Country()
 	ideas.tradition = rand()%20 + 40;
 }
 
-void Country::description(Citizen president)
+void Country::description(Citizen president, bool inGame)
 {
 	cout << endl << endl;
-	cout << "JEST ROK " << (this)->year << endl;
+	cout << "ROK " << (this)->year << endl;
 	cout << "BUDZET PANSTWA TO " << (this)->budget << endl;
 	cout << "IDEOLOGIA PANSTWA: " << endl;
 	cout << "\tGospodarka: " << (this)->ideas.economy << endl;
@@ -25,10 +25,10 @@ void Country::description(Citizen president)
 	cout << "\tPodatki: " << (this)->ideas.taxes << endl;
 	cout << "\tTradycja: " << (this)->ideas.tradition << endl;
 	cout << endl;
-	if ((this)->year != 2000)
+	if (inGame)
 	{
 		cout << "OBECNIE URZEDUJACYM PREZYDENTEM JEST: " << endl;
-			president.description();
+		president.description();
 	}
 }
 
