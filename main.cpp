@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 	{
 		ourCountry.next_year();
 		int death_ratio=0;
-		if (!(ourCountry.r_year()%cadence))
+		if ((ourCountry.r_year()%cadence)==1)
 		{
 			elections++;
 			Citizen oldPresident = president;
