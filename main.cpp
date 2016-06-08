@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
 	int numberOfCitizens = atoi(argv[1]);
 	int cadence = atoi(argv[2]);
 	int duration = atoi(argv[3]);
+	int s_duration = duration;
 	int presidents = 0;
 	int elections = 0;
 	Citizen citizens[numberOfCitizens];
@@ -58,7 +59,7 @@ int main(int argc, char *argv[])
 	cout << "Dane wejsciowe: " << endl;
 	cout << "\tIlosc obywateli: " << numberOfCitizens << endl;
 	cout << "\tCzas trwania kandencji: " << cadence << endl;
-	cout << "\tIlosc lat: " << duration << endl << endl;
+	cout << "\tIlosc lat: " << s_duration << endl << endl;
 	cout << "Stan poczatkowy: " << endl;
 	startCountry.description(president,0);
 

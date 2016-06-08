@@ -62,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -87,29 +88,40 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">s_ideas Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Struktura zawierająca poglądy obywateli i państwa.  
+ <a href="structs__ideas.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Citizen_8h_source.html">Citizen.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a53d529ca607242cc14489be033474c9e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a53d529ca607242cc14489be033474c9e"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>economy</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__ideas.html#a53d529ca607242cc14489be033474c9e">economy</a></td></tr>
+<tr class="memdesc:a53d529ca607242cc14489be033474c9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">im wyższy, tym większy wpływ państwa na gospodarkę <br /></td></tr>
 <tr class="separator:a53d529ca607242cc14489be033474c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf9154f9e53f7959eb3e046181770035"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf9154f9e53f7959eb3e046181770035"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>freedom</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__ideas.html#aaf9154f9e53f7959eb3e046181770035">freedom</a></td></tr>
+<tr class="memdesc:aaf9154f9e53f7959eb3e046181770035"><td class="mdescLeft">&#160;</td><td class="mdescRight">im wyższy, tym większy wpływ państwa na ograniczanie swobód <br /></td></tr>
 <tr class="separator:aaf9154f9e53f7959eb3e046181770035"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0121973d39415038d9acc8169dde4c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0121973d39415038d9acc8169dde4c1"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>taxes</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__ideas.html#ab0121973d39415038d9acc8169dde4c1">taxes</a></td></tr>
+<tr class="memdesc:ab0121973d39415038d9acc8169dde4c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">wpływają na przestępczość, rzeczywista wysokość to taxes/2 <br /></td></tr>
 <tr class="separator:ab0121973d39415038d9acc8169dde4c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed8682e418bc2d5619269a1017c98382"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed8682e418bc2d5619269a1017c98382"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>tradition</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__ideas.html#aed8682e418bc2d5619269a1017c98382">tradition</a></td></tr>
+<tr class="memdesc:aed8682e418bc2d5619269a1017c98382"><td class="mdescLeft">&#160;</td><td class="mdescRight">przywiązanie do tradycji <br /></td></tr>
 <tr class="separator:aed8682e418bc2d5619269a1017c98382"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Struktura zawierająca poglądy obywateli i państwa. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="Citizen_8h_source.html">Citizen.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 8 2016 00:05:04 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 8 2016 02:31:07 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

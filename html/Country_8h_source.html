@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,29 +92,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="comment">//string name;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="structs__ideas.html">s_ideas</a> ideas;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">int</span> year;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">int</span> year; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">float</span> budget;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classCountry.html">Country</a>();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">void</span> description(<a class="code" href="classCitizen.html">Citizen</a>, <span class="keywordtype">bool</span>);</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classCountry.html#a1db56101d06cc97b2be2a68607f4ac48">   12</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="classCountry.html#a1db56101d06cc97b2be2a68607f4ac48">budget</a>; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classCountry.html">Country</a>(); </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">void</span> description(<a class="code" href="classCitizen.html">Citizen</a>, <span class="keywordtype">bool</span>); </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">float</span> r_budget() { <span class="keywordflow">return</span> budget;}</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">int</span> r_year() { <span class="keywordflow">return</span> year;}</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">float</span> r_taxes() { <span class="keywordflow">return</span> ideas.taxes;}</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">float</span> r_economy() { <span class="keywordflow">return</span> ideas.economy; }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">float</span> r_freedom() { <span class="keywordflow">return</span> ideas.freedom; }</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">float</span> r_tradition() { <span class="keywordflow">return</span> ideas.tradition;}</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">float</span> r_taxes() { <span class="keywordflow">return</span> ideas.<a class="code" href="structs__ideas.html#ab0121973d39415038d9acc8169dde4c1">taxes</a>;}</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">float</span> r_economy() { <span class="keywordflow">return</span> ideas.<a class="code" href="structs__ideas.html#a53d529ca607242cc14489be033474c9e">economy</a>; }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">float</span> r_freedom() { <span class="keywordflow">return</span> ideas.<a class="code" href="structs__ideas.html#aaf9154f9e53f7959eb3e046181770035">freedom</a>; }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">float</span> r_tradition() { <span class="keywordflow">return</span> ideas.<a class="code" href="structs__ideas.html#aed8682e418bc2d5619269a1017c98382">tradition</a>;}</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> next_year() { year++; }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> change_country_ideas(<a class="code" href="classCitizen.html">Citizen</a>);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> pay_welfare();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> change_country_ideas(<a class="code" href="classCitizen.html">Citizen</a>); </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> pay_welfare(); </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
-<div class="ttc" id="classCitizen_html"><div class="ttname"><a href="classCitizen.html">Citizen</a></div><div class="ttdef"><b>Definition:</b> Citizen.h:25</div></div>
+<div class="ttc" id="structs__ideas_html_ab0121973d39415038d9acc8169dde4c1"><div class="ttname"><a href="structs__ideas.html#ab0121973d39415038d9acc8169dde4c1">s_ideas::taxes</a></div><div class="ttdeci">float taxes</div><div class="ttdoc">wpływają na przestępczość, rzeczywista wysokość to taxes/2 </div><div class="ttdef"><b>Definition:</b> Citizen.h:22</div></div>
+<div class="ttc" id="classCitizen_html"><div class="ttname"><a href="classCitizen.html">Citizen</a></div><div class="ttdoc">Klasa obywatela, czyli mieszkańca państwa. </div><div class="ttdef"><b>Definition:</b> Citizen.h:28</div></div>
+<div class="ttc" id="structs__ideas_html_a53d529ca607242cc14489be033474c9e"><div class="ttname"><a href="structs__ideas.html#a53d529ca607242cc14489be033474c9e">s_ideas::economy</a></div><div class="ttdeci">float economy</div><div class="ttdoc">im wyższy, tym większy wpływ państwa na gospodarkę </div><div class="ttdef"><b>Definition:</b> Citizen.h:20</div></div>
 <div class="ttc" id="namespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div></div>
-<div class="ttc" id="structs__ideas_html"><div class="ttname"><a href="structs__ideas.html">s_ideas</a></div><div class="ttdef"><b>Definition:</b> Citizen.h:16</div></div>
+<div class="ttc" id="structs__ideas_html_aed8682e418bc2d5619269a1017c98382"><div class="ttname"><a href="structs__ideas.html#aed8682e418bc2d5619269a1017c98382">s_ideas::tradition</a></div><div class="ttdeci">float tradition</div><div class="ttdoc">przywiązanie do tradycji </div><div class="ttdef"><b>Definition:</b> Citizen.h:23</div></div>
+<div class="ttc" id="structs__ideas_html"><div class="ttname"><a href="structs__ideas.html">s_ideas</a></div><div class="ttdoc">Struktura zawierająca poglądy obywateli i państwa. </div><div class="ttdef"><b>Definition:</b> Citizen.h:18</div></div>
+<div class="ttc" id="structs__ideas_html_aaf9154f9e53f7959eb3e046181770035"><div class="ttname"><a href="structs__ideas.html#aaf9154f9e53f7959eb3e046181770035">s_ideas::freedom</a></div><div class="ttdeci">float freedom</div><div class="ttdoc">im wyższy, tym większy wpływ państwa na ograniczanie swobód </div><div class="ttdef"><b>Definition:</b> Citizen.h:21</div></div>
 <div class="ttc" id="classCountry_html"><div class="ttname"><a href="classCountry.html">Country</a></div><div class="ttdef"><b>Definition:</b> Country.h:5</div></div>
+<div class="ttc" id="classCountry_html_a1db56101d06cc97b2be2a68607f4ac48"><div class="ttname"><a href="classCountry.html#a1db56101d06cc97b2be2a68607f4ac48">Country::budget</a></div><div class="ttdeci">float budget</div><div class="ttdoc">budżet, zależy od podatków i gospodarki </div><div class="ttdef"><b>Definition:</b> Country.h:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 8 2016 00:05:04 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 8 2016 02:31:07 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
